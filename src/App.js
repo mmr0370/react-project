@@ -10,15 +10,16 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import './app.scss';
 
-const {Header, Footer, Sider, Content} = Layout;
+const { Sider, Content } = Layout;
 
 export default function App() {
     const store = createStore(reducers);
     return (
         <Provider store={store}>
             <Router>
-                <Layout>
+                <Layout className="layout">
                     <Sider>
                         <Menu>
                             <Menu.Item><Link to="/count">计数器</Link></Menu.Item>
@@ -26,15 +27,14 @@ export default function App() {
                         </Menu>
                     </Sider>
                     <Layout>
-                        <Header>Header</Header>
-                        <Content>Content</Content>
-                        <Footer>Footer</Footer>
+                        <Content>
+                            <Switch>
+                                <Route path="/count" component={Routes.CountApp}/>
+                                <Route path="/todo" component={Routes.TodoApp}/>
+                            </Switch>
+                        </Content>
                     </Layout>
                 </Layout>
-                <Switch>
-                    <Route path="/count" component={Routes.CountApp} />
-                    <Route path="/todo" component={Routes.TodoApp} />
-                </Switch>
             </Router>
         </Provider>
     )

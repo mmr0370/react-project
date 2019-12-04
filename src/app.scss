@@ -1,0 +1,24 @@
+.layout {
+    height:100%;
+  .ant-layout-sider {
+    background: #6495ed;
+  }
+
+  .ant-layout-content {
+    background: #f1f1f1;
+  }
+
+  .ant-menu {
+    background: #6495ed;
+
+    .ant-menu-item {
+      a {
+        color: #fff;
+      }
+    }
+
+    .ant-menu-item-active, .ant-menu-item-selected {
+      background: #1890ff;
+    }
+  }
+}

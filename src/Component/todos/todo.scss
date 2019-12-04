@@ -1,0 +1,16 @@
+.todo-list {
+  width: 400px;
+  margin: 60px auto;
+
+  .todo-header {
+    display: flex;
+
+    .operate-btn {
+      margin-left: auto;
+    }
+  }
+
+  .completed {
+    text-decoration: line-through;
+  }
+}

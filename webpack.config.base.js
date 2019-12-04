@@ -42,10 +42,16 @@ module.exports = {
                     },
                     {
                         loader: 'less-loader',
-                        options: { sourceMap: true }
+                        options: {
+                            modifyVars:{
+                                'primary-color': '#fff',
+                                'link-color': '#1DA57A',
+                                'border-radius-base': '2px'
+                            },
+                            javascriptEnabled: true
+                        }
                     }
-                ],
-                exclude: /node_modules/
+                ]
             },
             {
                 test: /\.(png|jpg|gif|svg(\?v=\d+\.\d+\.\d+)?|woff|eot|ttf)$/,
