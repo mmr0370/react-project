@@ -5,7 +5,6 @@ const initialState = {
 
 export default function todoListReducer(state = initialState, action) {
     const list = state.list;
-    console.log(list);
 
     switch (action.type) {
         case 'add':

@@ -9,28 +9,27 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // 压缩js文件
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+const {   NODE_BRANCH } = require('./prod.env');
+
 module.exports = {
     entry: path.resolve(__dirname, 'src/index'),
     output: {
-        filename: "js/[name].[hash:6].js",
+        filename: `js/[name].${NODE_BRANCH}.js`,
         publicPath: "/",
         // chunkFilename: 'bundle.[chunkhash:8].min.js',
         path: path.resolve(__dirname, 'build')
     },
-    resolve: {
-        modules: ['node_modules', join(__dirname, '../node_modules')],
-    },
     module: {
         rules: [
             {
-                test: /\.css|scss|less$/,
+                test: /\.css|scss$/,
                 use:[
                     {
                         loader: MiniCssExtractPlugin.loader,
                     },
-                    {
-                        loader: "style-loader"
-                    },
+                    // {
+                    //     loader: "style-loader"
+                    // },
                     { loader: 'css-loader', options: { url: false, sourceMap: true } },
                     {
                         loader: 'postcss-loader',
@@ -39,16 +38,20 @@ module.exports = {
                     {
                         loader: 'sass-loader',
                         options: { sourceMap: true }
-                    },
+                    }
+                ],
+                exclude: /node_modules/
+            },
+            {
+                test:/\.css|less$/,
+                exclude:/src/,
+                use:[
                     {
-                        loader: 'less-loader',
-                        options: {
-                            modifyVars:{
-                                'primary-color': '#fff',
-                                'link-color': '#1DA57A',
-                                'border-radius-base': '2px'
-                            },
-                            javascriptEnabled: true
+                        loader: "style-loader"},
+                    {
+                        loader: "css-loader",
+                        options:{
+                            importLoaders:1
                         }
                     }
                 ]
@@ -74,7 +77,7 @@ module.exports = {
         new CleanWebpackPlugin(),
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
-            filename: '[name].[chunkhash:6].min.css'
+            filename: `css/[name].${NODE_BRANCH}.min.css`
         }),
     ]
 };
