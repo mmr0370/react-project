@@ -24,6 +24,7 @@ export default function App() {
                         <Menu>
                             <Menu.Item><Link to="/count">计数器</Link></Menu.Item>
                             <Menu.Item><Link to="/todo">待办项</Link></Menu.Item>
+                            <Menu.Item><Link to="/WebRTC">WebRTC</Link></Menu.Item>
                         </Menu>
                     </Sider>
                     <Layout>
@@ -31,6 +32,7 @@ export default function App() {
                             <Switch>
                                 <Route path="/count" component={Routes.CountApp}/>
                                 <Route path="/todo" component={Routes.TodoApp}/>
+                                <Route path="/WebRTC" component={Routes.WebRTCAPP}/>
                             </Switch>
                         </Content>
                     </Layout>

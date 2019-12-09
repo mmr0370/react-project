@@ -6,8 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // 清除build/dist文件夹文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// 压缩js文件
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const {   NODE_BRANCH } = require('./prod.env');
 
@@ -19,6 +17,7 @@ module.exports = {
         // chunkFilename: 'bundle.[chunkhash:8].min.js',
         path: path.resolve(__dirname, 'build')
     },
+    devtool: 'source-map',
     module: {
         rules: [
             {
